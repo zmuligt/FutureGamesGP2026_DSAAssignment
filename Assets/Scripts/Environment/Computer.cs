@@ -1,4 +1,5 @@
-﻿using Environment.Tasks;
+﻿using Assets.Scripts.Utils;
+using Environment.Tasks;
 using System;
 using UnityEngine;
 using Utils;
@@ -20,6 +21,10 @@ namespace Environment {
                 activeTask.Execute();
             }
 
+            //SORTING FROM SORTINGUTILS WEEK 3
+            ///int[] arrayToSort = new[] { 5, 2, 3, 1, 4 };
+            ///SortingUtils.SelectionSort(arrayToSort);
+            ///Debug.Log(arrayToSort);
         }
     }
 }
