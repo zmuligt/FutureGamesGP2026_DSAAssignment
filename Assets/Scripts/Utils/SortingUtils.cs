@@ -7,12 +7,12 @@ namespace Assets.Scripts.Utils
     {
         public static void SelectionSort(int[] arrayToSort)
         {
-            for(int i = 0; i < arrayToSort.Length - 1; i++)
+            for (int i = 0; i < arrayToSort.Length - 1; i++)
             {
                 int currentSmallestIndex = i;
-                for(int j = i;  j < arrayToSort.Length; j++)
+                for (int j = i; j < arrayToSort.Length; j++)
                 {
-                    if(arrayToSort[j] < arrayToSort[i])
+                    if (arrayToSort[j] < arrayToSort[currentSmallestIndex])
                     {
                         currentSmallestIndex = j;
                     }
