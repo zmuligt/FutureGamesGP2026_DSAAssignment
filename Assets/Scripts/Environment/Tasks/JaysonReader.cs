@@ -8,13 +8,14 @@ namespace Environment.Tasks {
          [SerializeField]
         private TextAsset jsonFile = null;
 
+        public Employees.Employee[] employees;
         public override void Execute() 
         {
             if(jsonFile == null) {
                 return;
             }
 
-           Employees.Employee[] employees = JsonUtility.FromJson<Employees.EmployeeArray>(jsonFile.text)?.employees;
+           employees = JsonUtility.FromJson<Employees.EmployeeArray>(jsonFile.text)?.employees;
 
            if(employees != null && employees.Length <= 0) {
                 return;

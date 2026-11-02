@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Concurrent;
 using UnityEngine;
 
 namespace Assets.Scripts.Utils
@@ -14,7 +15,7 @@ namespace Assets.Scripts.Utils
             Scientist = 4
         }
 
-        public class Employee
+        public class sortEmployee
         {
             public uint employeeId;
             public EmployeeType type = EmployeeType.Unassigned;
@@ -27,7 +28,7 @@ namespace Assets.Scripts.Utils
 
         public static void SelectionSort(int[] arrayToSort)
         {
-            Employee employee = new Employee();
+            sortEmployee employee = new sortEmployee();
             employee.IsEmployeeOfType(EmployeeType.Scientist);
 
             for (int i = 0; i < arrayToSort.Length - 1; i++)
@@ -46,13 +47,13 @@ namespace Assets.Scripts.Utils
             }
         }
 
-        static void merge(int[] inArray, int left, int middle, int right) 
+        public static void merge(sortEmployee[] inArray, int left, int middle, int right) 
         {
             int sizeLeft = middle - left + 1;
             int sizeRight = right - (middle + 1) + 1;
 
-            int[] tempLeft = new int[sizeLeft];
-            int[] tempRight = new int[sizeRight];
+            sortEmployee[] tempLeft = new sortEmployee[sizeLeft];
+            sortEmployee[]  tempRight = new sortEmployee[sizeRight];
             int i = 0;
             int j = 0;
             for(i = 0; i < sizeLeft; i++)
@@ -69,7 +70,7 @@ namespace Assets.Scripts.Utils
             int k = left;
             while (i < sizeLeft && j < sizeRight)
             {
-                if (tempLeft[i] <= tempRight[j])
+                if (tempLeft[i].employeeId <= tempRight[j].employeeId)
                 {
                     inArray[k] = tempLeft[i];
                     i++;
@@ -97,7 +98,7 @@ namespace Assets.Scripts.Utils
 
         }
 
-        static void mergeSort(int[] inArray, int left, int right)
+       public static void mergeSort(sortEmployee[] inArray, int left, int right)
         {
             if (left < right)
             {
@@ -109,6 +110,15 @@ namespace Assets.Scripts.Utils
 
 
         }
+
+        //public static void quickSort(sortEmployee[] inArray, int left, int right)
+       // {
+         //   if(left < right)
+         //   {
+                
+         //   }
+          //  pivotIndex = Partitioner(inArray, left, right);
+       // }
 
 
     }

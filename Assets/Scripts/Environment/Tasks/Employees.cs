@@ -11,7 +11,7 @@ public class Employees
         public int employeeId;
         public bool hasEngineRoomClearance;
         public DateTime lastEntranceInEngineRoom;
-        public DateTime lastExitFromEngineRoom;
+        public DateTime lastExitFromEngineRoom;    
     }
 
     [Serializable]
