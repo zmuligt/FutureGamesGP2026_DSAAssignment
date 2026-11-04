@@ -7,10 +7,14 @@ using Utils;
 namespace Environment {
 
     public class Computer : MonoBehaviour, IInteractable {
+        public static Computer Instance;
         [SerializeField]
         private GenericQueue<Task> taskQueue = new GenericQueue<Task>();
-        private void Start() {
-            
+        public Employee[] allEmployee;
+
+        private void Awake()
+        {
+            Instance = this;
         }
 
         public void OnInteract() {

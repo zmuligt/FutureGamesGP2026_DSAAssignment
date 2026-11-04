@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Concurrent;
 using UnityEngine;
+using Environment;
+using System;
 
 namespace Assets.Scripts.Utils
 {
@@ -15,90 +17,60 @@ namespace Assets.Scripts.Utils
             Scientist = 4
         }
 
-        public class sortEmployee
-        {
-            public uint employeeId;
-            public EmployeeType type = EmployeeType.Unassigned;
-
-            public bool IsEmployeeOfType(EmployeeType InEmployeeType)
-            {
-                return InEmployeeType == type;
-            }
-        }
-
-        public static void SelectionSort(int[] arrayToSort)
-        {
-            sortEmployee employee = new sortEmployee();
-            employee.IsEmployeeOfType(EmployeeType.Scientist);
-
-            for (int i = 0; i < arrayToSort.Length - 1; i++)
-            {
-                int currentSmallestIndex = i;
-                for (int j = i; j < arrayToSort.Length; j++)
-                {
-                    if (arrayToSort[j] < arrayToSort[currentSmallestIndex])
-                    {
-                        currentSmallestIndex = j;
-                    }
-                }
-                int temp = arrayToSort[i];
-                arrayToSort[i] = arrayToSort[currentSmallestIndex];
-                arrayToSort[currentSmallestIndex] = temp;
-            }
-        }
-
-        public static void merge(sortEmployee[] inArray, int left, int middle, int right) 
+        public static void merge(Employee[] inArray, int left, int middle, int right) 
         {
             int sizeLeft = middle - left + 1;
-            int sizeRight = right - (middle + 1) + 1;
+            int sizeRight = right - middle;
 
-            sortEmployee[] tempLeft = new sortEmployee[sizeLeft];
-            sortEmployee[]  tempRight = new sortEmployee[sizeRight];
-            int i = 0;
-            int j = 0;
-            for(i = 0; i < sizeLeft; i++)
+            Employee[] tempLeft = new Employee[sizeLeft];
+            Employee[]  tempRight = new Employee[sizeRight];
+
+            for(int i = 0; i < sizeLeft; i++)
             {
                 tempLeft[i] = inArray[i + left];
             }
-            for (j = 0; j < sizeRight; j++)
+            for (int j = 0; j < sizeRight; j++)
             {
                 tempRight[j] = inArray[j + middle + 1];
             }
 
-            i = 0;
-            j = 0;
-            int k = left;
-            while (i < sizeLeft && j < sizeRight)
+            int iindex = 0;
+            int jindex = 0;
+            int kindex = left;
+            while (iindex < sizeLeft && jindex < sizeRight)
             {
-                if (tempLeft[i].employeeId <= tempRight[j].employeeId)
+                DateTime leftTime = DateTime.Parse(tempLeft[iindex].lastEntranceInEngineRoom);
+                DateTime rightTime = DateTime.Parse(tempRight[jindex].lastEntranceInEngineRoom);
+
+                if (leftTime <= rightTime)
                 {
-                    inArray[k] = tempLeft[i];
-                    i++;
+                    inArray[kindex] = tempLeft[iindex];
+                    iindex++;
                 }
                 else
                 {
-                    inArray[k] = tempRight[j];
-                    j++;
+                    inArray[kindex] = tempRight[jindex];
+                    jindex++;
                 }
-                k++;
+                kindex++;
             }
 
-            while(i < sizeLeft)
+            while(iindex < sizeLeft)
             {
-                inArray[k] = tempLeft[i];
-                i++;
-                k++;
+                inArray[kindex] = tempLeft[iindex];
+                iindex++;
+                kindex++;
             }
-            while (j < sizeRight)
+            while (jindex < sizeRight)
             {
-                inArray[k] = tempRight[j];
-                j++;
-                k++;
+                inArray[kindex] = tempRight[jindex];
+                jindex++;
+                kindex++;
             }
 
         }
 
-       public static void mergeSort(sortEmployee[] inArray, int left, int right)
+       public static void mergeSort(Employee[] inArray, int left, int right)
         {
             if (left < right)
             {
