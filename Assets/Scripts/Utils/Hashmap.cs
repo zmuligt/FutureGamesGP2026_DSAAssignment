@@ -47,9 +47,9 @@ namespace Utils{
             
         }
 
-        public void get(int inValueToSearch)
+        public int get(int inValueToSearch)
         {
-            
+            return -1;
         }
     }
 }

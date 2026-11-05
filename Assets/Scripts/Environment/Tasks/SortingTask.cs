@@ -25,7 +25,7 @@ namespace Environment.Tasks
 
             foreach(Employee employee in Computer.Instance.allEmployee)
             {
-                Debug.Log("Everything sorted.");
+                //Debug.Log("Sorted.");
             }
         }
     }
