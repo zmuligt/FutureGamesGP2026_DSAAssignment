@@ -1,16 +1,17 @@
-﻿using Environment;
+﻿/*
+using Environment;
 using JetBrains.Annotations;
 using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Utils
 {
-    /*
+    
     public class BSTNode
     {
         private int data;
-        private BSTNode? leftChild = null;
-        private BSTNode? rightChild = null;
+        public BSTNode? leftChild = null;
+        public BSTNode? rightChild = null;
 
 
         public int GetData()
@@ -61,5 +62,5 @@ namespace Assets.Scripts.Utils
             }
         }
     }
-    */
 }
+*/

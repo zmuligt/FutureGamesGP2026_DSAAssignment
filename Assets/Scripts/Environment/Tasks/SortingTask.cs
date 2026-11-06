@@ -23,10 +23,11 @@ namespace Environment.Tasks
 
             Computer.Instance.allEmployee = employees;
 
-            foreach(Employee employee in Computer.Instance.allEmployee)
+            /*foreach(Employee employee in Computer.Instance.allEmployee)
             {
                 //Debug.Log("Sorted.");
             }
+            */
         }
     }
 }

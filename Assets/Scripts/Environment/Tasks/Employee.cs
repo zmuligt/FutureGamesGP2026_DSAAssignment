@@ -13,6 +13,7 @@ namespace Environment
         public bool hasEngineRoomClearance;
         public string lastEntranceInEngineRoom;
         public string lastExitFromEngineRoom;
+        
         public class EmployeeArray
         {
             public Employee[] employees;

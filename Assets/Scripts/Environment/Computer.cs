@@ -18,7 +18,6 @@ namespace Environment {
         }
 
         public void OnInteract() {
-            //testTask.Execute();
 
             if(taskQueue.Count > 0) {
                 Task activeTask = taskQueue.Dequeue();

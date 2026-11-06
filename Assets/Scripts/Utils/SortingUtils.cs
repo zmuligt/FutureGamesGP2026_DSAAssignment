@@ -23,7 +23,7 @@ namespace Assets.Scripts.Utils
             int sizeRight = right - middle;
 
             Employee[] tempLeft = new Employee[sizeLeft];
-            Employee[]  tempRight = new Employee[sizeRight];
+            Employee[] tempRight = new Employee[sizeRight];
 
             for(int i = 0; i < sizeLeft; i++)
             {

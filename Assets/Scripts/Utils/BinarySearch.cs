@@ -1,34 +1,31 @@
 ﻿using Environment;
 using System.Collections;
 using UnityEngine;
-
+using System;
 
 namespace Assets.Scripts.Utils
 {
-
-    /*
     public class BinarySearch
     {
-
-        public static int binarySearch(Employee[] inArray, int elementToSearch)
+        public static int binarySearch(Employee[] inArray, string elementToSearch)
         {
             int bottomIndexOfSubArray = 0;
             int topIndexOfSubArray = inArray.Length - 1;
-            Employee[] tempLeft = new Employee[bottomIndexOfSubArray];
-            Employee[] tempRight = new Employee[topIndexOfSubArray];
-            
+            int median = 0;
 
             while (bottomIndexOfSubArray <= topIndexOfSubArray)
             {
-                int median = bottomIndexOfSubArray + (topIndexOfSubArray - bottomIndexOfSubArray) / 2;
+                median = bottomIndexOfSubArray + (topIndexOfSubArray - bottomIndexOfSubArray) / 2;
 
-               if (inArray[median] == elementToSearch)
+                DateTime entrance = DateTime.Parse(inArray[median].lastEntranceInEngineRoom);
+                DateTime search = DateTime.Parse(elementToSearch);
+
+               if (entrance == search)
                 {
                     return median;
                 }
-
-
-                if (inArray[median] < elementToSearch)
+                
+                if (entrance < search)
                 {
                     bottomIndexOfSubArray = median + 1;
                 }
@@ -37,9 +34,7 @@ namespace Assets.Scripts.Utils
                     topIndexOfSubArray = median + 1;
                 }
             }
-            return -1;
-
+            return median;
         }
     }
-    */
 }
