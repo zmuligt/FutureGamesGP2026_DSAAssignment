@@ -18,16 +18,16 @@ namespace Environment.Tasks
 
         public void MergeSort()
         {
+            
             Employee[] employees = Computer.Instance.allEmployee;
             SortingUtils.mergeSort(employees, 0, employees.Length - 1);
 
             Computer.Instance.allEmployee = employees;
 
-            /*foreach(Employee employee in Computer.Instance.allEmployee)
-            {
-                //Debug.Log("Sorted.");
-            }
-            */
+            
+            Debug.Log("Sorted.");
+            
+            
         }
     }
 }

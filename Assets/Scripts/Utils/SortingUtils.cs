@@ -83,15 +83,5 @@ namespace Assets.Scripts.Utils
 
         }
 
-        //public static void quickSort(sortEmployee[] inArray, int left, int right)
-       // {
-         //   if(left < right)
-         //   {
-                
-         //   }
-          //  pivotIndex = Partitioner(inArray, left, right);
-       // }
-
-
     }
 }

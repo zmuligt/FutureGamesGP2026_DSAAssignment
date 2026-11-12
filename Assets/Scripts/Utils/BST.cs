@@ -1,6 +1,5 @@
-﻿/*
-using Environment;
-using JetBrains.Annotations;
+﻿using Environment;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,17 +8,17 @@ namespace Assets.Scripts.Utils
     
     public class BSTNode
     {
-        private int data;
+        private Employee data;
         public BSTNode? leftChild = null;
         public BSTNode? rightChild = null;
 
 
-        public int GetData()
+        public Employee GetData()
         {
             return data;
         }
 
-        public BSTNode(int inData)
+        public BSTNode(Employee inData)
         {
             this.data = inData;
         }
@@ -28,31 +27,41 @@ namespace Assets.Scripts.Utils
     {
         private BSTNode root;
 
-        public BinarySearchTree(int rootData)
+        public BinarySearchTree(Employee rootData)
         {
             root = new BSTNode(rootData);
         }
-        public void Insert(int inData)
+        public void Insert(Employee inData)
         {
             BSTNode newNode = new BSTNode(inData);
+
+            if (root == null)
+            {
+                root = newNode;
+                return;
+            }
+
             BSTNode? currentNode = root;
             BSTNode? lastParent = null;
 
+            DateTime newtEntranceTime = DateTime.Parse(inData.lastEntranceInEngineRoom);
+
             while (currentNode != null)
             {
-                if (inData < currentNode.GetData())
-                {
-                    lastParent = currentNode;
-                    currentNode = currentNode.leftChild;
+                lastParent = currentNode;
+                DateTime currentEntranceTime = DateTime.Parse(currentNode.GetData().lastEntranceInEngineRoom);
 
+                if (newtEntranceTime < currentEntranceTime)
+                {
+                    currentNode = currentNode.leftChild;
                 }
                 else
                 {
-                    lastParent = currentNode;
                     currentNode = currentNode.rightChild;
                 }
             }
-            if (inData < lastParent.GetData())
+            DateTime parentEntranceTime = DateTime.Parse(lastParent.GetData().lastEntranceInEngineRoom);
+            if (newtEntranceTime < parentEntranceTime)
             {
                 lastParent.leftChild = newNode;
             }
@@ -63,4 +72,3 @@ namespace Assets.Scripts.Utils
         }
     }
 }
-*/
