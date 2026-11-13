@@ -19,14 +19,14 @@ namespace Assets.Scripts.Utils
                 median = bottomIndexOfSubArray + (topIndexOfSubArray - bottomIndexOfSubArray) / 2;
 
                 DateTime entrance = DateTime.Parse(inArray[median].lastEntranceInEngineRoom);
-                
 
-               if (entrance == elementToSearch)
+
+                if (entrance.Date == elementToSearch.Date)
                 {
                     return median;
                 }
-                
-                if (entrance < elementToSearch)
+
+                if (entrance.Date < elementToSearch.Date)
                 {
                     bottomIndexOfSubArray = median + 1;
                 }
@@ -35,8 +35,7 @@ namespace Assets.Scripts.Utils
                     topIndexOfSubArray = median - 1;
                 }
             }
-            return median;
-            
+            return -1;
         }
     }
 }

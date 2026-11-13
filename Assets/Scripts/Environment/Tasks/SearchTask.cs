@@ -5,41 +5,40 @@ using System.Linq;
 using UnityEngine;
 using Utils;
 using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace Environment.Tasks
 {
-    [CreateAssetMenu(fileName = "SearchTask", menuName = "SearchTask")]
-
-    
+    [CreateAssetMenu(fileName = "SearchTask", menuName = "SearchTask")] 
     public class SearchTask : Task
     {
         //search params
         //benchmark time the search takes - how?
         
-       
-        string time = "2234-08-08T13:17:24"; //what's the range supposed to be?
-        
-
+        [SerializeField] List<Employee> Results = new List<Employee>();
         public override void Execute()
         {
-            
-            BinSearch();            //call binary search on sorted employee array
-            
+            BinSearch();
         }
 
         public void BinSearch()
         {
-            Stopwatch stopwatch = Stopwatch.StartNew();
             Employee[] employees = Computer.Instance.allEmployee;
-            DateTime lastEntranceInEngineRoomParameters = DateTime.Parse(time);
+            
+            Stopwatch stopwatch = Stopwatch.StartNew(); 
 
-            BinarySearch.binarySearch(employees, lastEntranceInEngineRoomParameters);
-            Computer.Instance.allEmployee = employees;
+            int lowerResult = BinarySearch.binarySearch(employees, new DateTime(2234,08,09,22,00,00));
+            int upperResult = BinarySearch.binarySearch(employees, new DateTime (2234,08,09,23,00,00));
+
+            for (int i = lowerResult; i <= upperResult; i++)
+            {
+                Results.Add(employees[i]);
+            }
+
             stopwatch.Stop();
+            Computer.Instance.allEmployee = employees;
+            
             UnityEngine.Debug.Log($"Search took: {stopwatch.Elapsed.TotalSeconds} seconds. Or =~ {stopwatch.Elapsed.TotalMilliseconds} milliseconds.");
         }
-
-        
-
     }
 }

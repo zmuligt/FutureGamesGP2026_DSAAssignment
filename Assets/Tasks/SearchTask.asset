@@ -12,3 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fa535c210781384bb548a8b62ca4e05, type: 3}
   m_Name: SearchTask
   m_EditorClassIdentifier: Assembly-CSharp::Environment.Tasks.SearchTask
+  Results:
+  - name: Clara Graves
+    employeeId: 271
+    hasEngineRoomClearance: 1
+    lastEntranceInEngineRoom: 2234-08-09T03:47:49
+    lastExitFromEngineRoom: 2234-08-01T07:41:09
