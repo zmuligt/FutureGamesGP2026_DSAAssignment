@@ -1,6 +1,8 @@
 ﻿using Environment;
+using NUnit.Framework;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Utils
@@ -70,5 +72,36 @@ namespace Assets.Scripts.Utils
                 lastParent.rightChild = newNode;
             }
         }
+
+        public List<Employee> BreadthFirstSearch(DateTime starttime, DateTime endtime)
+        {
+            List<Employee> result = new List<Employee>();
+
+            Queue<BSTNode> queue = new Queue<BSTNode>();
+            queue.Enqueue(root);
+
+            while (queue.Count > 0)
+            {
+                BSTNode currentNode = queue.Dequeue();
+                DateTime currentTime = DateTime.Parse(currentNode.GetData().lastEntranceInEngineRoom);
+
+                if(currentTime >= starttime && currentTime <= endtime)
+                {
+                    result.Add(currentNode.GetData());
+                }
+
+                if(currentNode.leftChild != null)
+                {
+                    queue.Enqueue(currentNode.leftChild);
+                }
+                if (currentNode.rightChild != null)
+                {
+                    queue.Enqueue(currentNode.rightChild);
+                }
+            }
+            return result;
+        }
     }
+
+    
 }
